@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iglesia Presbiteriana Reformada Juan G. Hall</title>
+    <!-- Fuentes elegantes y legibles -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Colores extraídos de image.png e image_2.png */
+            --primary-green: #006847;
+            --accent-gold: #f2ad1d;
+            --dark-text: #2b2b2b;
+            --light-bg: #fdfbf7; /* Tono cálido como las paredes del templo */
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+        }
+
+        /* Barra de Navegación */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            line-height: 1.2;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Sección Hero (Bienvenida) */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 104, 71, 0.85), rgba(242, 173, 29, 0.2)), url('image_2.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            text-align: center;
+            padding: 8rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 3rem;
+            border-radius: 16px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: #000;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background-color: #e09b16;
+        }
+
+        /* Secciones Generales */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-gold);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Horarios (Tarjetas) */
+        .grid-horarios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--primary-green);
+            text-align: center;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+
+        /* Nuestro Templo */
+        .templo-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .templo-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .templo-img-container {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .templo-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a2e26;
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .templo-section {
+                flex-direction: column-reverse;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado y Navegación -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <!-- Se hace referencia a la imagen del logotipo verbatim -->
+                <img src="image.png" alt="Logo Iglesia Juan G. Hall" class="logo-img">
+                <div class="logo-text">
+                    Iglesia Presbiteriana<br>Reformada Juan G. Hall
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#horarios">Horarios</a></li>
+                    <li><a href="#templo">Nuestro Templo</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección de Bienvenida (Hero) -->
+    <section id="inicio" style="max-width: 100%; padding: 0;">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Bienvenidos a Nuestra Comunidad</h1>
+                <p>Un espacio de fe, esperanza y amor reformado en el corazón de nuestra ciudad. Te invitamos a compartir la palabra y crecer juntos en comunión.</p>
+                <a href="#horarios" class="btn">Ver Horarios de Culto</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Horarios -->
+    <section id="horarios">
+        <h2 class="section-title">Horarios de Actividades</h2>
+        <div class="grid-horarios">
+            <div class="card">
+                <h3>Culto Dominical</h3>
+                <p><strong>Domingos</strong></p>
+                <p>10:00 AM</p>
+                <p>Acompáñanos en nuestro servicio principal de adoración y alabanza.</p>
+            </div>
+            <div class="card">
+                <h3>Estudio Bíblico</h3>
+                <p><strong>Miércoles</strong></p>
+                <p>6:00 PM</p>
+                <p>Un tiempo para profundizar en las Escrituras y fortalecer nuestro conocimiento.</p>
+            </div>
+            <div class="card">
+                <h3>Escuela Dominical</h3>
+                <p><strong>Domingos</strong></p>
+                <p>9:00 AM</p>
+                <p>Formación cristiana para niños, jóvenes y adultos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Nuestro Templo -->
+    <section id="templo">
+        <h2 class="section-title">Nuestro Espacio de Adoración</h2>
+        <div class="templo-section">
+            <div class="templo-img-container">
+                <!-- Se hace referencia a la imagen del templo de forma verbatim -->
+                <img src="image_2.png" alt="Interior del Templo Juan G. Hall" class="templo-img">
+            </div>
+            <div class="templo-text">
+                <h3>Un lugar de paz y encuentro</h3>
+                <p style="margin-top: 1rem; margin-bottom: 1rem;">Nuestras puertas están abiertas para recibir a todos aquellos que buscan un refugio espiritual y una comunidad fraterna. El diseño de nuestro santuario invita a la reverencia, la oración y la meditación comunitaria.</p>
+                <p>Ven tal como eres y forma parte de nuestra historia y de nuestra misión de servicio.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer>
+        <p>&copy; 2026 Iglesia Presbiteriana Reformada Juan G. Hall. Todos los derechos reservados.</p>
+        <p>Encuéntranos en nuestro templo histórico. ¡Te esperamos!</p>
+    </footer>
+
+</body>
+</html>
