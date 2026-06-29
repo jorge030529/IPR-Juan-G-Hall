@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iglesia Presbiteriana Reformada Juan G. Hall</title>
-    <!-- Fuentes elegantes y legibles -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Colores extraídos del logotipo y el templo */
             --primary-green: #006847;
+            --primary-dark: #0a251c;
             --accent-gold: #f2ad1d;
-            --dark-text: #2b2b2b;
-            --light-bg: #fdfbf7; /* Tono cálido como las paredes del templo */
+            --accent-soft: #fbf5e6;
+            --dark-text: #2c3e35;
+            --light-bg: #fdfcf9;
             --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 68, 43, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -23,20 +25,26 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--dark-text);
             background-color: var(--light-bg);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         /* Barra de Navegación */
         header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.03);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(0, 104, 71, 0.08);
         }
 
         .nav-container {
@@ -51,196 +59,397 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
         .logo-img {
-            height: 60px;
+            height: 65px;
             width: auto;
-            border-radius: 8px;
+            border-radius: 6px;
         }
 
         .logo-text {
             font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--primary-green);
             line-height: 1.2;
+            letter-spacing: -0.2px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         nav a {
             text-decoration: none;
             color: var(--dark-text);
-            font-weight: 500;
-            transition: color 0.3s;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-green);
+            transition: var(--transition);
         }
 
         nav a:hover {
             color: var(--primary-green);
         }
 
-        /* Sección Hero (Bienvenida) con fondo del templo */
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Sección Hero */
         .hero {
-            background: linear-gradient(135deg, rgba(0, 104, 71, 0.85), rgba(242, 173, 29, 0.2)), url('IMG_1969.jpeg');
+            background: linear-gradient(135deg, rgba(10, 37, 28, 0.9), rgba(0, 104, 71, 0.4)), url('IMG_1969.jpeg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: var(--white);
             text-align: center;
-            padding: 8rem 2rem;
+            padding: 11rem 2rem;
+            position: relative;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 3rem;
-            border-radius: 16px;
-            backdrop-filter: blur(4px);
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
             font-weight: 300;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Banner de Inclusión */
+        .welcome-badge {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 0.6rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(242, 173, 29, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--accent-gold);
-            color: #000;
-            padding: 0.8rem 2rem;
+            background-color: var(--white);
+            color: var(--primary-green);
+            padding: 1rem 2.5rem;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 700;
-            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: var(--transition);
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            background-color: #e09b16;
+            transform: translateY(-3px);
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            box-shadow: 0 8px 25px rgba(242, 173, 29, 0.3);
         }
 
-        /* Secciones Generales */
+        /* Secciones */
         section {
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--primary-green);
             text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
+            margin-bottom: 4rem;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
-            height: 4px;
+            width: 80px;
+            height: 3px;
             background-color: var(--accent-gold);
-            margin: 0.5rem auto 0;
+            margin: 0.8rem auto 0;
             border-radius: 2px;
         }
 
-        /* Horarios (Tarjetas) */
-        .grid-horarios {
+        /* Versículos Recomendados */
+        .verses-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .verse-card {
+            background-color: var(--white);
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 104, 71, 0.03);
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .verse-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(242, 173, 29, 0.3);
+        }
+
+        .verse-card p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .verse-author {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Horarios / Actividades */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
 
-        .card {
+        .activity-card {
             background-color: var(--white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            border-top: 4px solid var(--primary-green);
-            text-align: center;
+            padding: 2rem;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary-green);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
         }
 
-        .card h3 {
+        .activity-card:hover {
+            transform: translateX(5px);
+            border-left-color: var(--accent-gold);
+        }
+
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 1rem;
-            color: var(--primary-green);
+            gap: 1rem;
         }
 
-        /* Nuestro Templo */
+        .activity-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .activity-time {
+            background-color: var(--accent-soft);
+            color: var(--primary-green);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .activity-day {
+            font-weight: 600;
+            color: var(--accent-gold);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-desc {
+            font-size: 0.95rem;
+            color: #5c7066;
+        }
+
+        /* Sección Nuestro Templo */
         .templo-section {
             display: flex;
             align-items: center;
-            gap: 4rem;
+            gap: 5rem;
             flex-wrap: wrap;
+            background-color: var(--accent-soft);
+            padding: 5rem 4rem;
+            border-radius: 24px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
         }
 
         .templo-text {
             flex: 1;
-            min-width: 300px;
+            min-width: 350px;
+        }
+
+        .templo-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
         }
 
         .templo-img-container {
             flex: 1;
-            min-width: 300px;
+            min-width: 350px;
         }
 
         .templo-img {
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 68, 43, 0.12);
+        }
+
+        /* Contacto e Información */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            background-color: var(--white);
+            padding: 3.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 104, 71, 0.04);
+        }
+
+        .contact-info-block h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--primary-green);
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-item-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        .contact-item-value a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item-value a:hover {
+            color: var(--primary-green);
         }
 
         /* Footer */
         footer {
-            background-color: #1a2e26;
-            color: rgba(255,255,255,0.8);
+            background-color: var(--primary-dark);
+            color: rgba(255,255,255,0.7);
             text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
+            padding: 4rem 2rem;
+            border-top: 4px solid var(--accent-gold);
         }
 
         footer p {
+            font-size: 0.95rem;
+        }
+
+        footer .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            font-weight: 700;
             margin-bottom: 1rem;
         }
 
         /* Responsividad */
+        @media (max-width: 992px) {
+            .templo-section {
+                padding: 3rem 2rem;
+                gap: 3rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+            nav ul {
+                gap: 1.5rem;
             }
             .hero h1 {
+                font-size: 2.4rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .section-title {
                 font-size: 2.2rem;
             }
-            .templo-section {
-                flex-direction: column-reverse;
-                gap: 2rem;
+            .contact-wrapper {
+                padding: 2rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Encabezado y Navegación -->
+    <!-- Barra de Navegación -->
     <header>
         <div class="nav-container">
             <div class="logo-area">
-                <!-- Nombre corregido según la captura image_4.png -->
                 <img src="c592fe58-3207-4da7-9673-011d95009334.jpeg" alt="Logo Iglesia Juan G. Hall" class="logo-img">
                 <div class="logo-text">
                     Iglesia Presbiteriana<br>Reformada Juan G. Hall
@@ -249,69 +458,182 @@
             <nav>
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#horarios">Horarios</a></li>
-                    <li><a href="#templo">Nuestro Templo</a></li>
+                    <li><a href="#versiculos">Palabra</a></li>
+                    <li><a href="#horarios">Actividades</a></li>
+                    <li><a href="#templo">El Templo</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Sección de Bienvenida (Hero) -->
+    <!-- Sección Hero -->
     <section id="inicio" style="max-width: 100%; padding: 0;">
         <div class="hero">
             <div class="hero-content">
-                <h1>Bienvenidos a Nuestra Comunidad</h1>
-                <p>Un espacio de fe, esperanza y amor reformado en el corazón de nuestra ciudad. Te invitamos a compartir la palabra y crecer juntos en comunión.</p>
-                <a href="#horarios" class="btn">Ver Horarios de Culto</a>
+                <div class="welcome-badge">Nuestra casa es tu casa</div>
+                <h1>Un Espacio de Fe Abierto para Todos</h1>
+                <p>Nuestra iglesia se encuentra con las puertas abiertas todos los días de la semana, lista para recibir a cada persona sin distinción. Ven a compartir la gracia, la comunión y el amor de Dios.</p>
+                <a href="#horarios" class="btn">Conoce Nuestras Actividades</a>
             </div>
         </div>
     </section>
 
-    <!-- Sección de Horarios -->
+    <!-- Sección de Versículos Bíblicos -->
+    <section id="versiculos">
+        <h2 class="section-title">Palabra de Inspiración</h2>
+        <div class="verses-container">
+            <div class="verse-card">
+                <p>"Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna."</p>
+                <div class="verse-author">Juan 3:16</div>
+            </div>
+            <div class="verse-card">
+                <p>"El Señor es mi pastor; nada me faltará. En lugares de delicados pastos me hará descansar; junto a aguas de reposo me pastoreará."</p>
+                <div class="verse-author">Salmo 23:1-2</div>
+            </div>
+            <div class="verse-card">
+                <p>"Todo lo puedo en Cristo que me fortalece. Por nada estéis afanosos, sino sean conocidas vuestras peticiones delante de Dios en toda oración."</p>
+                <div class="verse-author">Filipenses 4:13</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Actividades -->
     <section id="horarios">
-        <h2 class="section-title">Horarios de Actividades</h2>
-        <div class="grid-horarios">
-            <div class="card">
-                <h3>Culto Dominical</h3>
-                <p><strong>Domingos</strong></p>
-                <p>10:00 AM</p>
-                <p>Acompáñanos en nuestro servicio principal de adoración y alabanza.</p>
+        <h2 class="section-title">Horarios y Vida Comunitaria</h2>
+        <div class="activities-grid">
+            
+            <!-- Culto Dominical -->
+            <div class="activity-card">
+                <div class="activity-header">
+                    <div class="activity-title">Culto de Adoración</div>
+                    <div class="activity-time">10:00 AM</div>
+                </div>
+                <div>
+                    <div class="activity-day">Domingos</div>
+                    <div class="activity-desc">Nuestro servicio principal de alabanza, oración y reflexión en torno a las Sagradas Escrituras.</div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Estudio Bíblico</h3>
-                <p><strong>Miércoles</strong></p>
-                <p>6:00 PM</p>
-                <p>Un tiempo para profundizar en las Escrituras y fortalecer nuestro conocimiento.</p>
+
+            <!-- Estudio Bíblico -->
+            <div class="activity-card">
+                <div class="activity-header">
+                    <div class="activity-title">Estudio Bíblico</div>
+                    <div class="activity-time">9:00 AM y 4:00 PM</div>
+                </div>
+                <div>
+                    <div class="activity-day">Miércoles</div>
+                    <div class="activity-desc">Dos horarios disponibles para profundizar juntos en la Palabra y fortalecer nuestro conocimiento teológico.</div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Escuela Dominical</h3>
-                <p><strong>Domingos</strong></p>
-                <p>9:00 AM</p>
-                <p>Formación cristiana para niños, jóvenes y adultos.</p>
+
+            <!-- Escuelita Sabatina -->
+            <div class="activity-card">
+                <div class="activity-header">
+                    <div class="activity-title">Escuelita Sabatina</div>
+                    <div class="activity-time">10:00 AM</div>
+                </div>
+                <div>
+                    <div class="activity-day">Sábados</div>
+                    <div class="activity-desc">Un espacio educativo, dinámico y espiritual dedicado especialmente al crecimiento de niños y jóvenes.</div>
+                </div>
             </div>
+
+            <!-- Culto Jóvenes -->
+            <div class="activity-card">
+                <div class="activity-header">
+                    <div class="activity-title">Culto de Jóvenes</div>
+                    <div class="activity-time">4:00 PM</div>
+                </div>
+                <div>
+                    <div class="activity-day">Tercer Sábado del mes</div>
+                    <div class="activity-desc">Punto de encuentro juvenil con música, testimonios y mensajes enfocados en los desafíos actuales.</div>
+                </div>
+            </div>
+
+            <!-- Culto Adultos Jóvenes -->
+            <div class="activity-card">
+                <div class="activity-header">
+                    <div class="activity-title">Culto de Adultos Jóvenes</div>
+                    <div class="activity-time">4:00 PM</div>
+                </div>
+                <div>
+                    <div class="activity-day">Primer Sábado del mes</div>
+                    <div class="activity-desc">Un tiempo de comunión y reflexión dirigido a las familias jóvenes y profesionales en desarrollo espiritual.</div>
+                </div>
+            </div>
+
+            <!-- Proyecto Luz de Belén -->
+            <div class="activity-card">
+                <div class="activity-header">
+                    <div class="activity-title">Proyecto "Luz de Belén"</div>
+                    <div class="activity-time">10:00 AM</div>
+                </div>
+                <div>
+                    <div class="activity-day">Lunes, Miércoles y Viernes</div>
+                    <div class="activity-desc">Atención y acompañamiento amoroso a los ancianos de nuestra comunidad en situación de vulnerabilidad.</div>
+                </div>
+            </div>
+
+            <!-- Entrega de Agua -->
+            <div class="activity-card">
+                <div class="activity-header">
+                    <div class="activity-title">Entrega de Agua Purificada</div>
+                    <div class="activity-time">10:00 AM</div>
+                </div>
+                <div>
+                    <div class="activity-day">Martes, Jueves y Sábado</div>
+                    <div class="activity-desc">Servicio comunitario de suministro de agua segura para el bienestar de toda la población vecina.</div>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- Sección Nuestro Templo -->
     <section id="templo">
-        <h2 class="section-title">Nuestro Espacio de Adoración</h2>
         <div class="templo-section">
             <div class="templo-img-container">
-                <!-- Nombre corregido según la captura image_3.png -->
-                <img src="IMG_1969.jpeg" alt="Interior del Templo Juan G. Hall" class="templo-img">
+                <img src="IMG_1969.jpeg" alt="Interior de la Iglesia Juan G. Hall" class="templo-img">
             </div>
             <div class="templo-text">
-                <h3>Un lugar de paz y encuentro</h3>
-                <p style="margin-top: 1rem; margin-bottom: 1rem;">Nuestras puertas están abiertas para recibir a todos aquellos que buscan un refugio espiritual y una comunidad fraterna. El diseño de nuestro santuario invita a la reverencia, la oración y la meditación comunitaria.</p>
-                <p>Ven tal como eres y forma parte de nuestra historia y de nuestra misión de servicio.</p>
+                <h3>Un Santuario Histórico</h3>
+                <p>Nuestra edificación no solo resguarda años de fe y tradición reformada, sino que constituye un centro vivo de servicio social y encuentro espiritual.</p>
+                <p style="margin-top: 1rem;">Cada detalle del altar invita a la calma y a la oración sincera, recordándonos que somos llamados a ser luz en medio de nuestra sociedad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto">
+        <h2 class="section-title">¿Dónde encontrarnos?</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info-block">
+                <h3>Información de Contacto</h3>
+                <div class="contact-item">
+                    <div class="contact-item-label">Dirección</div>
+                    <div class="contact-item-value">Calzada #65 e/ Jénez y Laborde, Cárdenas, Matanzas, Cuba.</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-label">Teléfono</div>
+                    <div class="contact-item-value"><a href="tel:+5345524939">+53 45524939</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-label">Correo Electrónico</div>
+                    <div class="contact-item-value"><a href="mailto:iprjuanghall@gmail.com">iprjuanghall@gmail.com</a></div>
+                </div>
+            </div>
+            <div class="contact-info-block" style="display: flex; flex-direction: column; justify-content: center; background-color: var(--accent-soft); padding: 2rem; border-radius: 12px; border: 1px dashed rgba(0,68,43,0.15);">
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--primary-dark); margin-bottom: 0.5rem; text-align: center;">Comunidad Abierta</h4>
+                <p style="text-align: center; color: #5c7066; font-size: 1rem;">Te recordamos que nuestras puertas se mantienen abiertas <strong>todos los días</strong> para recibir a todas las personas. No importa de dónde vengas, aquí tienes un lugar.</p>
             </div>
         </div>
     </section>
 
     <!-- Pie de Página -->
     <footer>
-        <p>&copy; 2026 Iglesia Presbiteriana Reformada Juan G. Hall. Todos los derechos reservados.</p>
-        <p>Encuéntranos en nuestro templo histórico. ¡Te esperamos!</p>
+        <div class="footer-brand">Iglesia Presbiteriana Reformada Juan G. Hall</div>
+        <p>&copy; 2026 Cárdenas, Matanzas. Dedicados a la fe, el servicio comunitario y la fraternidad.</p>
     </footer>
 
 </body>
