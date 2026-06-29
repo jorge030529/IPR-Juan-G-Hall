@@ -34,6 +34,7 @@
             color: var(--dark-text);
             background-color: var(--light-bg);
             line-height: 1.7;
+            overflow-x: hidden;
         }
 
         /* Barra de Navegación */
@@ -90,6 +91,7 @@
             font-size: 0.95rem;
             transition: var(--transition);
             position: relative;
+            white-space: nowrap;
         }
 
         nav a::after {
@@ -144,7 +146,6 @@
             color: rgba(255,255,255,0.9);
         }
 
-        /* Banner de Inclusión */
         .welcome-badge {
             background-color: var(--accent-gold);
             color: var(--primary-dark);
@@ -203,7 +204,7 @@
             border-radius: 2px;
         }
 
-        /* Versículos Recomendados */
+        /* Versículos */
         .verses-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -218,7 +219,6 @@
             box-shadow: var(--shadow);
             border: 1px solid rgba(0, 104, 71, 0.03);
             text-align: center;
-            position: relative;
             transition: var(--transition);
         }
 
@@ -245,10 +245,10 @@
             letter-spacing: 1px;
         }
 
-        /* Horarios / Actividades */
+        /* Actividades */
         .activities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
@@ -306,7 +306,7 @@
             color: #5c7066;
         }
 
-        /* Sección Nuestro Templo */
+        /* Nuestro Templo */
         .templo-section {
             display: flex;
             align-items: center;
@@ -321,7 +321,7 @@
 
         .templo-text {
             flex: 1;
-            min-width: 350px;
+            min-width: 320px;
         }
 
         .templo-text h3 {
@@ -333,7 +333,7 @@
 
         .templo-img-container {
             flex: 1;
-            min-width: 350px;
+            min-width: 320px;
         }
 
         .templo-img {
@@ -343,7 +343,7 @@
             box-shadow: 0 15px 35px rgba(0, 68, 43, 0.12);
         }
 
-        /* Contacto e Información */
+        /* Contacto */
         .contact-wrapper {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -400,10 +400,6 @@
             border-top: 4px solid var(--accent-gold);
         }
 
-        footer p {
-            font-size: 0.95rem;
-        }
-
         footer .footer-brand {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
@@ -412,34 +408,97 @@
             margin-bottom: 1rem;
         }
 
-        /* Responsividad */
-        @media (max-width: 992px) {
-            .templo-section {
-                padding: 3rem 2rem;
-                gap: 3rem;
-            }
-        }
-
+        /* Media Queries para Móviles (Ajustes de image_5.png) */
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
-                gap: 1.5rem;
-                padding: 1.5rem;
+                gap: 1.2rem;
+                padding: 1.2rem 1rem;
+                text-align: center;
             }
+
+            .logo-area {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .logo-text {
+                font-size: 1.15rem;
+            }
+
             nav ul {
-                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem 1.2rem;
+                padding: 0 0.5rem;
             }
+
+            nav a {
+                font-size: 0.9rem;
+                padding: 0.2rem 0;
+            }
+
+            .hero {
+                padding: 6rem 1rem;
+                background-attachment: scroll;
+            }
+
             .hero h1 {
-                font-size: 2.4rem;
+                font-size: 2rem;
             }
+
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1.05rem;
             }
+
+            section {
+                padding: 3.5rem 1rem;
+            }
+
             .section-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
+                margin-bottom: 2.5rem;
             }
+
+            .templo-section {
+                padding: 2.5rem 1.2rem;
+                gap: 2rem;
+                border-radius: 16px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .templo-text, .templo-img-container {
+                min-width: 100%;
+            }
+
+            .templo-text h3 {
+                font-size: 1.75rem;
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .verses-container {
+                grid-template-columns: 1fr;
+            }
+
             .contact-wrapper {
-                padding: 2rem;
+                padding: 2rem 1.2rem;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            nav ul {
+                gap: 0.8rem 1rem;
+            }
+            nav a {
+                font-size: 0.85rem;
+            }
+            .logo-text {
+                font-size: 1rem;
             }
         }
     </style>
@@ -597,7 +656,7 @@
                 <img src="IMG_1969.jpeg" alt="Interior de la Iglesia Juan G. Hall" class="templo-img">
             </div>
             <div class="templo-text">
-                <h3>Un Santuario Histórico</h3>
+                <h3>Histórico</h3>
                 <p>Nuestra edificación no solo resguarda años de fe y tradición reformada, sino que constituye un centro vivo de servicio social y encuentro espiritual.</p>
                 <p style="margin-top: 1rem;">Cada detalle del altar invita a la calma y a la oración sincera, recordándonos que somos llamados a ser luz en medio de nuestra sociedad.</p>
             </div>
