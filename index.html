@@ -37,7 +37,7 @@
             overflow-x: hidden;
         }
 
-        /* Barra de Navegación */
+        /* Barra de Navegación (Escritorio) */
         header {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -408,34 +408,41 @@
             margin-bottom: 1rem;
         }
 
-        /* Media Queries para Móviles (Ajustes de image_5.png) */
+        /* Ajustes optimizados para dispositivos móviles (image_6.png FIX) */
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
-                gap: 1.2rem;
-                padding: 1.2rem 1rem;
+                gap: 0.5rem;          /* Espacio mínimo entre el bloque del logo y el menú */
+                padding: 0.6rem 1rem; /* Reducción drástica del grosor superior e inferior */
                 text-align: center;
             }
 
             .logo-area {
-                flex-direction: column;
-                gap: 0.5rem;
+                flex-direction: row;  /* Mantiene logo e imagen juntos horizontalmente en móviles */
+                justify-content: center;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+            .logo-img {
+                height: 45px;         /* Ajuste compacto para que no ocupe altura innecesaria */
             }
 
             .logo-text {
-                font-size: 1.15rem;
+                font-size: 1.05rem;   /* Tipografía más pequeña y estilizada para el teléfono */
+                text-align: left;
             }
 
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 1rem 1.2rem;
-                padding: 0 0.5rem;
+                gap: 0.4rem 1rem;     /* Reduce la separación entre las filas de enlaces del menú */
+                padding: 0;
             }
 
             nav a {
-                font-size: 0.9rem;
-                padding: 0.2rem 0;
+                font-size: 0.88rem;
+                padding: 0.1rem 0;
             }
 
             .hero {
@@ -492,13 +499,13 @@
 
         @media (max-width: 360px) {
             nav ul {
-                gap: 0.8rem 1rem;
+                gap: 0.3rem 0.8rem;
             }
             nav a {
-                font-size: 0.85rem;
+                font-size: 0.82rem;
             }
             .logo-text {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
         }
     </style>
